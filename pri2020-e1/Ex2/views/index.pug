@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Tipologias
+  
+  table
+   tr
+    th Id
+    th Designação 
+    th Sigla 
+   each t in dados
+    tr 
+     td
+      a(href= '/' + t.id)= t.id 
+     td= t.designacao 
+     td= t.sigla
+

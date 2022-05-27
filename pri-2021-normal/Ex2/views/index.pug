@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Classes Nível 1
+
+  table
+    tr 
+      th Título 
+      th Código
+
+    each lis in dados
+      tr 
+        td= lis.titulo 
+        td
+         a(href= '/' + lis.codigo)= lis.codigo
+
+
+
+        

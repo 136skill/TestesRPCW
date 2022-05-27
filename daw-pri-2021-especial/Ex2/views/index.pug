@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Lista Diplomas
+
+  table
+    tr 
+      th Data
+      th Tipo
+      th Número
+      th Sumário
+
+    each d in dados
+      tr 
+        td= d.data
+        td= d.tipo
+        td= d.numero
+        td
+         a(href='/' + d.id)= d.sumario

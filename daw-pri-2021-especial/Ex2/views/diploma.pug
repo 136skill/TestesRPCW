@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1 Lista Diplomas
+  
+  table
+    tr 
+      th Data
+      th Tipo
+      th Número
+      th Sumário
+      th Link 
+      th Estado
+      tr 
+        td= dados.data
+        td= dados.tipo
+        td= dados.numero
+        td= dados.sumario
+        td= dados.link 
+        td= dados.estado 
+
+
+  h1 Entidades:
+  if dados.entidades.length > 0
+   table 
+    tr 
+     th ID
+     each t in dados.entidades
+      tr 
+       td= t.id
+  
+  
+  
+  h1 Processos:
+  if dados.regula.length > 0
+   table 
+    tr 
+     th Título 
+     th Código 
+     each t in dados.regula 
+      tr 
+       td= t.titulo 
+       td= t.codigo

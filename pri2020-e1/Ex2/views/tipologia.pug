@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  h1= "Tipologia " + dados.sigla
+  
+  
+  table
+   tr
+
+    th Designação 
+    th Sigla 
+   tr 
+ 
+    td= dados.designacao 
+    td= dados.sigla
+
+  h1 Entidades
+  if dados.entidades.length > 0
+   table 
+    tr 
+     th Sigla 
+     th Designação
+     th ID 
+    each d in dados.entidades 
+     tr 
+      td= d.sigla 
+      td= d.designacao 
+      td= d.id
+
+
+  h1 Dona
+  if dados.dono.length > 0
+   table 
+    tr 
+     th Código
+     th Título
+     th ID 
+    each d in dados.dono
+     tr 
+      td= d.codigo
+      td= d.titulo
+      td= d.id
+
+  h1 Participante
+  if dados.participante.length > 0
+   table 
+    tr 
+     th Código
+     th Título
+     th ID 
+    each d in dados.participante
+     tr 
+      td= d.codigo
+      td= d.titulo
+      td= d.id 
+  
+  
+  p.w3-green
+   a(href='/') Voltar à Página Principal
+  
