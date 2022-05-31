@@ -1,0 +1,61 @@
+extends layout
+
+block content
+    h1 Classe
+
+    table
+        tr 
+            th Título 
+            th Código
+            th Nível
+            th Status
+
+            tr 
+                td= dados.titulo 
+                td= dados.codigo
+                td= dados.nivel
+                td= dados.status
+
+    
+    h1 Filhos: 
+    if dados.filhos.length > 0
+        table
+         tr
+          th Título 
+          th Código 
+          each f in dados.filhos
+            tr 
+             td= f.titulo 
+             td
+              a(href= '/classes/' + f.codigo)= f.codigo 
+    else
+     p Não existem filhos
+
+
+    h1 Processos Relacionados:
+    if dados.nivel == 3
+        if dados.processosRelacionados.length > 0
+            table
+                tr
+                 th Título 
+                 th Código
+                 th Relação 
+                each f in dados.processosRelacionados
+                  tr 
+                    td= f.titulo 
+                    td
+                     a(href= '/classes/'+ f.codigo)= f.codigo
+                    td= f.idRel
+    else
+     p Não existem processos relacionados
+
+
+    if dados.pai.codigo == undefined
+     p.w3-green
+      a(href='/') Voltar à Página Principal
+    else
+     p
+      a(href='/classes/' + dados.pai.codigo) Página Anterior
+     p
+      a(href='/') Voltar à Página Principal
+            

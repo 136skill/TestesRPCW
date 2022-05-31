@@ -1,0 +1,74 @@
+extends layout
+
+block content
+    h1= "Tipologia" + dados.designacao
+
+    table
+        tr 
+            th Estado 
+            th ID
+            th Sigla
+            th Status
+
+            tr 
+                td= dados.estado
+                td= dados.id
+                td= dados.sigla
+                
+
+    
+    h1 Entidades: 
+    if dados.entidades.length > 0
+        table
+         tr
+          th Sigla 
+          th Designação
+          th ID
+          each f in dados.entidades
+            tr 
+             td= f.sigla 
+             td= f.designacao 
+             td
+              a(href= '/entidade/' + f.id)= f.id
+              
+    else
+     p Não existem entiades
+
+
+    h1 Dono: 
+    if dados.dono.length > 0
+        table
+         tr
+          th Código
+          th Título
+          th ID
+          each f in dados.dono
+            tr 
+             td= f.codigo 
+             td= f.titulo
+             td= f.id
+              
+    else
+     p Não existem Donos
+
+
+    h1 Participante: 
+    if dados.participante.length > 0
+        table
+         tr
+          th Código
+          th Título
+          th ID
+          each f in dados.participante
+            tr 
+             td= f.codigo 
+             td= f.titulo
+             td= f.id
+              
+    else
+     p Não existem participantes
+
+    
+    
+    p
+      a(href='/') Voltar à Página Principal

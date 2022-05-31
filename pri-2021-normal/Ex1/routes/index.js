@@ -50,7 +50,6 @@ router.get('/casamentos', function(req, res, next) {
        dados.forEach( d => {
          var filtro = /(\d+)\//
          var r = d.date.match(filtro)
-
          if (r[1] == req.query['ano']){
           casamentos.push(d)
          }

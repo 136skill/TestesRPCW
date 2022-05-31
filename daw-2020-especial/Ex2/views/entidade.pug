@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1= "Entidade " + dados.designacao
+
+    table
+        tr 
+            th Estado 
+            th ID
+            th Sigla
+            tr 
+                td= dados.estado
+                td= dados.id
+                td= dados.sigla
+    
+    
+
+    each x in dados.tipologias
+     p
+      a(href='/tipologia/' + x.id)= "Voltar à tipologia " + x.sigla
+    p
+      a(href='/') Voltar à Página Principal

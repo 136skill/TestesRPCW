@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Classes de 1º Nível
+
+  table
+    tr 
+      th Título
+      th Código
+      
+    each d in dados
+      tr 
+        td= d.titulo
+        td
+         a(href='/classes/' + d.codigo)= d.codigo

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Tipologias
+
+  table
+    tr 
+      th Designação
+      th Id
+      
+    each d in dados
+      tr 
+        td= d.designacao
+        td
+         a(href='/tipologia/' + d.id)= d.id

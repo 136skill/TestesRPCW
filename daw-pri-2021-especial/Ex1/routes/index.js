@@ -4,8 +4,6 @@ var Aluno = require('../controllers/aluno');
 const aluno = require('../models/aluno');
 
 router.get('/alunos', function(req,res){
-  console.log(req.query)
-  console.log('Print 1:' + req.query['groupBy'])
   if(req.query['groupBy'] != undefined){
     if(req.query['groupBy'] == 'curso'){
       Aluno.listar()
@@ -49,14 +47,22 @@ router.get('/alunos', function(req,res){
       var lista = []
       var filtro = /'recurso'/
       dados.forEach(n => {
+        //Alternativa se der import com o jsonArray e o schema do bond
+        console.log(n.exames['recurso'])
+        if(n.exames['recurso'] != undefined){
+          lista.push(n)
+        }
+        /*
+        //Alternativa se der import do mongo com o alunos_mongo
         var check = JSON.stringify(n.exames)
         var sol = check.match(filtro)
         if(sol){
           lista.push(n.nome)
         }
+        */
       })
-      lista.sort()
-      res.status(200).jsonp(lista)
+     lista.sort()
+     res.status(200).jsonp(lista)
     })
     .catch( e => {
       res.status(500).jsonp({erro : e})
@@ -83,12 +89,13 @@ router.get('/alunos', function(req,res){
   }
 })
 
-//NÃO ESTÁ A CONTAR BEM OS TPCS
+
 router.get('/alunos/tpc', function(req,res){
   Aluno.listarTPC()
   .then(dados => {
     var alunos = {}
     dados.forEach(d => {
+      console.log(d.tpc)
       var total = d.tpc.length
       alunos[d.idAluno] = {curso: d.curso, Ntpc: total}
     })
